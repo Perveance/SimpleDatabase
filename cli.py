@@ -4,17 +4,18 @@ import fileinput
 import sys
 from Parser import CommandParser
 from Parser import ParseError
+from SimpleDatabase import SimpleDatabase
 
 def print_help():
     pass
 
 if __name__ == "__main__":
 
-    print "Welcome to MKH Database"
-    print_help()
+    #print "Welcome to Mikhail's SimpleDatabase"
+    #print_help()
 
     parser = CommandParser()
-    #db = SimpleDatabase()
+    db = SimpleDatabase()
 
     while 1:
         try:
@@ -24,13 +25,16 @@ if __name__ == "__main__":
             if len(line.strip()) == 0:
                 continue
             cmd = parser.parse(line.strip())
-            print cmd.getType()
-            #ret = db.execute(cmd)
-            #print ret
+            #print cmd.getType()
+            if cmd.getType() == 'END':
+                break
+            ret = db.execute(cmd)
+            if len(ret.strip()) > 0:
+                print ret
         except KeyboardInterrupt:
             break
         except ParseError as e:
             print e
             continue
     
-        print line
+        #print line

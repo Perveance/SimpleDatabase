@@ -3,7 +3,7 @@
 class Command:
 
     def __init__(self, cmdType, arg1=None, arg2=None):
-        print "Command created"
+        #print "Command created"
         self._type = cmdType
         self._args = []
         if arg1: 
@@ -25,7 +25,8 @@ class ParseError(Exception):
 class CommandParser:
 
     def __init__(self):
-        print "Parser created"
+        #print "Parser created"
+        pass
 
     def parse(self, line):
 
@@ -33,8 +34,8 @@ class CommandParser:
         if len(words) == 0:
             raise PraseError("Empty input")
 
-        if words[0] == 'EXIT':
-            return Command('EXIT')
+        if words[0] == 'END':
+            return Command('END')
         elif words[0] == 'BEGIN':
             return Command('BEGIN')
         elif words[0] == 'ROLLBACK':
@@ -49,6 +50,10 @@ class CommandParser:
             if len(words) != 2:
                 raise ParseError("GET command needs 1 arguments")
             return Command('GET', words[1])
+        elif words[0] == 'UNSET':
+            if len(words) != 2:
+                raise ParseError("UNSET command needs 1 arguments")
+            return Command('UNSET', words[1])
         elif words[0] == 'NUMEQUALTO':
             if len(words) != 2:
                 raise ParseError("NUMEQUALTO command needs 1 arguments")
