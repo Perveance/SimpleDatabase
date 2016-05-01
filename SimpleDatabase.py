@@ -35,7 +35,10 @@ class SimpleDatabase:
             for var, val in t.getValues().iteritems():
                 merged[var] = val
             for var in t.getUnsetVars():
-                del merged[var]
+                try:
+                    del merged[var]
+                except:
+                    pass
 
 
 
