@@ -1,4 +1,3 @@
-#!/usr/bin/python 
 
 class Transaction:
 
@@ -11,7 +10,7 @@ class Transaction:
 
     def unset(self, var):
         self._unsetList.append(var)
-        print self._unsetList
+        #print self._unsetList
         try:
             del self._values[var]
         except KeyError:

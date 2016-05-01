@@ -1,5 +1,3 @@
-#!/usr/bin/python 
-
 from collections import deque
 from Transaction import Transaction
 
@@ -67,7 +65,7 @@ class SimpleDatabase:
 
     def unset(self, var):
         #print "  -> unset Enter"
-        if self._curTrans: # TODO: go through every transaction
+        if self._curTrans: # TODO: should we go through every transaction?
             #print "  -> unset current transaction"
             self._curTrans.unset(var)
         else:
@@ -76,6 +74,7 @@ class SimpleDatabase:
             except KeyError:
                 pass
         #print "  -> unset Exit"
+        return ""
 
 
     def get(self, var):

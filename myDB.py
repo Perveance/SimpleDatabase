@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 import fileinput
 import sys
 from Parser import CommandParser
